@@ -1,5 +1,7 @@
 package entity;
 
+import org.springframework.context.annotation.Bean;
+
 public class Animal {
 
     public String name = "name";
