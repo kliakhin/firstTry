@@ -2,31 +2,8 @@ package entity;
 
 public class Animal {
 
-    private String name;
-    private String age;
-    private String lastName;
-    private int age2;
-
-    public Animal() {
-    }
-
-    public Animal(String name, String age) {
-        this.name = name;
-        this.age = age;
-    }
-
-
-    public void writeName() {
-        System.out.println("My name is " + name + ", and age = " + age);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String name = "name";
+    public String age = "dgds";
 
     public String getAge() {
         return age;
@@ -36,19 +13,19 @@ public class Animal {
         this.age = age;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void init() {
+        System.out.println("I'm initialising");
     }
 
-    public String getLastName() {
-        return lastName;
+    public void destroy() {
+        System.out.println("Buy buy!");
     }
 
-    public void setAge2(int age2) {
-        this.age2 = age2;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getAge2() {
-        return age2;
+    public String getName() {
+        return name;
     }
 }

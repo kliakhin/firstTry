@@ -1,7 +1,8 @@
 package com.test.bu;
 
 import entity.Animal;
-import org.springframework.context.ApplicationContext;
+import entity.World;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -9,15 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class App {
     public static void main(String[] args) {
-        Animal animal1 = new Animal();
-        animal1.writeName();
-
-        System.out.println("And now from context: ");
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
-        Animal animal = (Animal) context.getBean("animal");
-        animal.writeName();
-
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        World world1 = (World) context.getBean("world");
+        world1.writeAnimal();
     }
 }
