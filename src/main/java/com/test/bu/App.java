@@ -1,22 +1,28 @@
 package com.test.bu;
 
+import entity.Animal;
 import org.joda.time.DateTime;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World1!");
+        Animal animal1 = new Animal();
 
-        LocalDateTime now = LocalDateTime.now();
+        animal1.writeName();
 
-        System.out.println("now " + now);
+        System.out.println("And now from context: ");
 
-        DateTime dateTime = new DateTime();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        System.out.println("Joda " + dateTime.getDayOfYear());
+        Animal animal = (Animal) context.getBean("animal");
+        animal.writeName();
+
     }
 }
