@@ -1,6 +1,7 @@
 package com.test.bu.dao;
 
 import com.test.bu.entity.User;
+import com.test.bu.mappers.UserMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -16,14 +17,13 @@ public class UserDaoIml implements UserDao {
 
     @Override
     public void save(User user) {
-        /*String sql = "INSERT INTO user(name, email, age) VALUES(?, ?, ?)";
-        jdbcTemplate.query(sql, );*/
-        System.out.println("I'm the save method");
+        String sql = "INSERT INTO user(name, email, age) VALUES(?, ?, ?)";
+        jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getAge());
     }
 
     @Override
     public List<User> getAll() {
-        System.out.println("I'm the getAll method");
-        return null;
+        String sql = "SELECT * FROM user";
+        return jdbcTemplate.query(sql, new UserMapper());
     }
 }
