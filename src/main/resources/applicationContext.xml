@@ -6,4 +6,21 @@
 
     <context:annotation-config/>
 
+    <bean id="rectangle" class="com.test.bu.entity.Rectangle">
+        <constructor-arg name="lenght" value="5"/>
+        <constructor-arg name="weight" value="5"/>
+    </bean>
+
+    <bean id="triangle" class="com.test.bu.entity.Triangle">
+        <constructor-arg name="shape" ref="rectangle"/>
+        <property name="side1" value="10"/>
+        <property name="side2" value="10"/>
+        <property name="side3" value="10"/>
+    </bean>
+
+    <bean id="circle" class="com.test.bu.entity.Circle">
+        <constructor-arg name="shape1" ref="rectangle"/>
+        <constructor-arg name="shape2" ref="triangle"/>
+        <property name="radius" value="20"/>
+    </bean>
 </beans>
