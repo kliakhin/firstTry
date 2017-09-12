@@ -9,6 +9,7 @@
     <bean id="rectangle" class="com.test.bu.entity.Rectangle">
         <constructor-arg name="lenght" value="5"/>
         <constructor-arg name="weight" value="5"/>
+        <property name="type" value="RECTANGLE"/>
     </bean>
 
     <bean id="triangle" class="com.test.bu.entity.Triangle">
@@ -16,11 +17,16 @@
         <property name="side1" value="10"/>
         <property name="side2" value="10"/>
         <property name="side3" value="10"/>
+        <property name="type" value="TRIANGLE"/>
     </bean>
 
     <bean id="circle" class="com.test.bu.entity.Circle">
         <constructor-arg name="shape1" ref="rectangle"/>
         <constructor-arg name="shape2" ref="triangle"/>
         <property name="radius" value="20"/>
+        <property name="type" value="CIRCLE"/>
     </bean>
+
+    <bean name="service1" class="com.test.bu.service.ServiceShape"/>
+
 </beans>
