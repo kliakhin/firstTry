@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>hello</servlet-name>
         <servlet-class>com.test.bu.controller.TestServlet</servlet-class>
     </servlet>
@@ -13,6 +13,6 @@
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
 </web-app>
