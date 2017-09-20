@@ -15,36 +15,25 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping(value = "/helloUser", method = RequestMethod.GET)
-    public String hello() {
-        return "hello";
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 
     @GetMapping("/user/{id}")
-    public String getUser(@PathVariable("id") int id, Model model) {
-        User userById = userService.getById(id);
-        model.addAttribute("user", userById);
-        return "user";
+    public String getUserById(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userService.getById(id));
+        return "showUser";
     }
 
     @GetMapping("/users")
-    public String showAllUsers(Model model) {
+    public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAll());
         return "userList";
     }
 
-    @GetMapping("/user")
-    public String addUser(@RequestParam("name") String name, @RequestParam("email") String email) {
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        userService.save(user);
-        return "redirect:users";
-    }
-
     @PostMapping("/newUser")
-    public String newUser(@ModelAttribute User user) {
+    public String createUser(@ModelAttribute User user) {
         userService.save(user);
         return "redirect:users";
     }
