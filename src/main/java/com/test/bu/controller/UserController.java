@@ -37,4 +37,30 @@ public class UserController {
         userService.save(user);
         return "redirect:users";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editPage(@PathVariable("id") int id, Model model) {
+        System.out.println("id = " + id);
+        model.addAttribute("user", userService.getById(id));
+        return "editUser";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@ModelAttribute User user, Model model) {
+        System.out.println("User = " + user.toString());
+        userService.update(user);
+        return "redirect:edit/" + user.getId();
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.delete(id);
+        return "redirect:/users";
+    }
+
+    @PostMapping("/delete")
+    public String deleteUser2(@ModelAttribute("id") int id) {
+        userService.delete(id);
+        return "redirect:users";
+    }
 }

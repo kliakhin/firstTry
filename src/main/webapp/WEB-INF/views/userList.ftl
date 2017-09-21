@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
+            <th>Buttons</th>
         </tr>
     <#list users as user>
         <tr>
@@ -21,6 +22,8 @@
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.age}</td>
+            <td><a href="/delete/${user.id}">Delete</a> </td>
+            <td><a href="/edit/${user.id}">Edit</a> </td>
         </tr>
     </#list>
     </table>
