@@ -47,7 +47,6 @@ public class UserController {
 
     @PostMapping("/editUser")
     public String editUser(@ModelAttribute User user, Model model) {
-        System.out.println("User = " + user.toString());
         userService.update(user);
         return "redirect:edit/" + user.getId();
     }

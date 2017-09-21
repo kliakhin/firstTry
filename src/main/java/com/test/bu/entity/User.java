@@ -1,7 +1,11 @@
 package com.test.bu.entity;
 
 
+import com.sun.istack.internal.NotNull;
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -14,6 +18,8 @@ public class User {
     private String email;
     private int age;
     private String phoneNumber;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Goods> goodsList;
 
     public User() {
     }
@@ -56,6 +62,14 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Goods> getGoodsList() {
+        return goodsList;
+    }
+
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
     }
 
     @Override

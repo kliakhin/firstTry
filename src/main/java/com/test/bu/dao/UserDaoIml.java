@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
 public class UserDaoIml implements UserDao {
 
     @PersistenceContext
@@ -27,8 +26,9 @@ public class UserDaoIml implements UserDao {
     }
 
     @Override
+    @Transactional
     public User update(User newUser) {
-        return null;
+        return entityManager.merge(newUser);
     }
 
     @Override
@@ -38,7 +38,6 @@ public class UserDaoIml implements UserDao {
 
     @Override
     public void delete(int id) {
-
     }
 
     @Override

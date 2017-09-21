@@ -11,7 +11,6 @@ public class Goods {
     private int id;
     private String name;
     private double price;
-    private String merchant;
 
 
     public int getId() {
@@ -38,11 +37,4 @@ public class Goods {
         this.price = price;
     }
 
-    public String getMerchant() {
-        return merchant;
-    }
-
-    public void setMerchant(String merchant) {
-        this.merchant = merchant;
-    }
 }

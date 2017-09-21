@@ -20,7 +20,6 @@
             <td>${goods.id}</td>
             <td>${goods.name}</td>
             <td>${goods.price}</td>
-            <td>${goods.merchant}</td>
         </tr>
     </#list>
     </table>
