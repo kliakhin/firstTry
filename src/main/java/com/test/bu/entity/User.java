@@ -1,11 +1,19 @@
 package com.test.bu.entity;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
     private String email;
     private int age;
+    private String phoneNumber;
 
     public User() {
     }
@@ -40,6 +48,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

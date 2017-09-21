@@ -1,21 +1,52 @@
 package com.test.bu.dao;
 
 import com.test.bu.entity.User;
-import com.test.bu.mappers.UserMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class UserDaoIml implements UserDao {
 
-    private JdbcTemplate jdbcTemplate;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    public UserDaoIml(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+
+    @Override
+    @Transactional
+    public void save(User user) {
+        entityManager.persist(user);
     }
 
     @Override
+    public User getUserById(int id) {
+        return entityManager.createQuery("SELECT u FROM User u WHERE id=:id", User.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
+    @Override
+    public User update(User newUser) {
+        return null;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public void delete(String name) {
+
+    }
+
+    /*@Override
     public void save(User user) {
         String sql = "INSERT INTO user(name, email, age) VALUES(?, ?, ?)";
         jdbcTemplate.update(sql, user.getName(), user.getEmail(), user.getAge());
@@ -51,5 +82,5 @@ public class UserDaoIml implements UserDao {
     public void delete(String name) {
         String sql = "DELETE FROM user WHERE name=?";
         jdbcTemplate.update(sql, name);
-    }
+    }*/
 }

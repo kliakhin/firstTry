@@ -19,12 +19,7 @@ public class SpringConfig {
 
     @Bean
     public UserDao getUserDaoIml() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/demo?userSll=false&?createDatabaseIfNotExist=true");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        return new UserDaoIml(dataSource);
+        return new UserDaoIml();
     }
 
 }
