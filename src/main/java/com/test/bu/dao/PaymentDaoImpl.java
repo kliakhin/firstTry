@@ -1,7 +1,7 @@
 package com.test.bu.dao;
 
-import com.test.bu.dao.interfaces.UserDao;
-import com.test.bu.entity.User;
+import com.test.bu.dao.interfaces.PaymentDao;
+import com.test.bu.entity.Payment;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class UserDaoIml implements UserDao {
+public class PaymentDaoImpl implements PaymentDao {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -18,31 +18,31 @@ public class UserDaoIml implements UserDao {
 
     @Override
     @Transactional
-    public void save(User entity) {
+    public void save(Payment entity) {
         entityManager.persist(entity);
     }
 
     @Override
-    public User getById(int id) {
-        return entityManager.createQuery("SELECT u FROM User u WHERE id=:id", User.class)
+    public Payment getById(int id) {
+        return entityManager.createQuery("SELECT g FROM Payment g WHERE id=:id", Payment.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
 
     @Override
     @Transactional
-    public void update(User entity) {
+    public void update(Payment entity) {
         entityManager.merge(entity);
     }
 
     @Override
-    public void delete(User entity) {
+    public void delete(Payment entity) {
         entityManager.remove(entity);
     }
 
     @Override
-    public List<User> getAll() {
-        return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
+    public List<Payment> getAll() {
+        return entityManager.createQuery("SELECT p FROM Payment p", Payment.class).getResultList();
     }
 
 }

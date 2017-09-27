@@ -13,8 +13,10 @@
             <a class="navbar-brand" href="/">MyApp</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="/users">Users</a></li>
-            <li class=""><a href="/goodsList">Goods</a></li>
+            <li class="active"><a href="/user/all">Users</a></li>
+            <li class=""><a href="/goods/all">Goods</a></li>
+            <li class=""><a href="/payment/all">Payments</a></li>
+            <li class=""><a href="/order/all">Orders</a></li>
         </ul>
     </div>
 </nav>

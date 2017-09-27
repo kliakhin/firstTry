@@ -1,13 +1,12 @@
 package com.test.bu.service;
 
-import com.test.bu.dao.GoodsDao;
-import com.test.bu.dao.UserDao;
+import com.test.bu.dao.interfaces.GoodsDao;
 import com.test.bu.entity.Goods;
-import com.test.bu.entity.User;
+import com.test.bu.service.interfaces.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
@@ -17,11 +16,11 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Goods getById(int id) {
-        return goodsDao.getGoodsById(id);
+        return goodsDao.getById(id);
     }
 
     @Override
-    public List<Goods> getAll() {
+    public Collection<Goods> getAll() {
         return goodsDao.getAll();
     }
 
@@ -32,12 +31,12 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public void delete(int id) {
-        goodsDao.delete(id);
+        goodsDao.delete(goodsDao.getById(id));
     }
 
     @Override
     public void update(Goods goods) {
-
+        goodsDao.delete(goods);
     }
 
 }

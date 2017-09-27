@@ -5,7 +5,7 @@
     <title>UserData</title>
 </head>
 <body class="container">
-<#include "templates/header.ftl">
+<#include "*/header.ftl">
 <div class="table-responsive" style="background-color: aqua">
     <caption>Users list</caption>
     <table class="table table-striped">
@@ -22,13 +22,13 @@
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.age}</td>
-            <td><a href="/delete/${user.id}">Delete</a>
-                <a href="/edit/${user.id}">Edit</a>
+            <td><a href="delete/${user.id}">Delete</a>
+                <a href="${user.id}?edit=true">Edit</a>
             </td>
         </tr>
     </#list>
     </table>
 </div>
-<#include "templates/createUserForm.ftl"/>
+<a href="create">Create new</a>
 </body>
 </html>

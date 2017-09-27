@@ -2,16 +2,19 @@ package com.test.bu.entity;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
-@Table(name = "goods")
-public class Goods {
+@Table(name = "basket")
+public class Basket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private double price;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Collection<Goods> goods = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -28,13 +31,4 @@ public class Goods {
     public void setName(String name) {
         this.name = name;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
 }

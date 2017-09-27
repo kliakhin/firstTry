@@ -5,7 +5,7 @@
     <title>Hello</title>
 </head>
 <body class="container">
-<#include "WEB-INF/views/templates/header.ftl">
+<#include "WEB-INF/views/header.ftl">
 <div class="container">
     <h1>The best app ever!</h1>
 </div>

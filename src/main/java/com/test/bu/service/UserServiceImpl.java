@@ -1,11 +1,12 @@
 package com.test.bu.service;
 
-import com.test.bu.dao.UserDao;
+import com.test.bu.dao.interfaces.UserDao;
 import com.test.bu.entity.User;
+import com.test.bu.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,11 +16,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(int id) {
-        return userDao.getUserById(id);
+        return userDao.getById(id);
     }
 
     @Override
-    public List<User> getAll() {
+    public Collection<User> getAll() {
         return userDao.getAll();
     }
 
@@ -30,13 +31,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(int id) {
-        userDao.delete(id);
+        userDao.delete(userDao.getById(id));
     }
 
     @Override
     public void update(User user) {
         userDao.update(user);
     }
-
-
 }
