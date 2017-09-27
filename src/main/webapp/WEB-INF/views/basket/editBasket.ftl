@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Goods List</title>
+    <title>Edit basket</title>
 </head>
 <body class="container">
 <#include "*/header.ftl">
-<h1>I'm goods list page</h1>
-<a href="create">Create new</a>
+
+<h1>I'm edit basket form</h1>
+
+<a type="button" href="all" class="button">Back</a>
 </body>
 </html>
