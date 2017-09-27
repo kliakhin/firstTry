@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne(fetch = FetchType.EAGER, targetEntity = Basket.class)
     private Basket basket;

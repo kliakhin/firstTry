@@ -1,6 +1,8 @@
 package com.test.bu.entity;
 
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +12,14 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String email;
-    private int age;
-    private String phoneNumber;
+    private int age = 0;
+    @NotNull
+    @Column(nullable = false)
+    private String phoneNumber = "";
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Payment.class)
     @JoinColumn(name = "customer_id")
     private List<Payment> payments = new ArrayList<>();

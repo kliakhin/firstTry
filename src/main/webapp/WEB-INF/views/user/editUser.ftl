@@ -15,7 +15,7 @@
     <input title="Email" type="text" name="email" value="${user.email}"/>
     Age
     <input title="Age" type="number" name="age" value="${user.age}"/>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Update"/>
 </form>
 <a type="button" href="/all" class="button">Back</a>
 </body>

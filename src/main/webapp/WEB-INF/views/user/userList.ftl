@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
+            <th>Phone</th>
             <th>Buttons</th>
         </tr>
     <#list users as user>
@@ -22,6 +23,7 @@
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.age}</td>
+            <td>${user.phoneNumber}</td>
             <td><a href="delete/${user.id}">Delete</a>
                 <a href="${user.id}?edit=true">Edit</a>
             </td>
