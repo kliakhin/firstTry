@@ -1,8 +1,5 @@
 package com.test.bu.entity;
 
-
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +14,6 @@ public class User {
     private String name;
     private String email;
     private int age = 0;
-    @NotNull
     @Column(nullable = false)
     private String phoneNumber = "";
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Payment.class)
