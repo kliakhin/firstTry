@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
 </head>
 <body class="container">
 
-<form action="/login" method="post" class="form-group">
+<form action="/loginPage" method="post" class="form-group">
     Name
     <input title="Name" type="text" name="username" "/>
     Password

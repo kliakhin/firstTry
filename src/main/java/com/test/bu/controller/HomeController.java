@@ -14,8 +14,8 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String loginPage(@RequestParam(value = "error", required = false) String error) {
+    @GetMapping("/loginPage")
+    public String loginPage() {
         return "loginPage";
     }
 
