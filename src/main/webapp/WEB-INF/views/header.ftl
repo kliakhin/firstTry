@@ -16,7 +16,7 @@
             <li class="active"><a href="/user/all">Users</a></li>
             <li class=""><a href="/goods/all">Goods</a></li>
             <li class=""><a href="/payment/all">Payments</a></li>
-            <li class=""><a href="/basket/all">Orders</a></li>
+            <li class=""><a href="/basket/all">Baskets</a></li>
         </ul>
     </div>
 </nav>
