@@ -5,6 +5,7 @@ import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -20,6 +21,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getByName(String userName) {
+        return userDao.getByName(userName);
+    }
+
+    @Override
     public Collection<User> getAll() {
         return userDao.getAll();
     }
@@ -30,6 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
         userDao.delete(userDao.getById(id));
     }
@@ -38,4 +45,5 @@ public class UserServiceImpl implements UserService {
     public void update(User user) {
         userDao.update(user);
     }
+
 }

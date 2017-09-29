@@ -1,11 +1,8 @@
 package com.test.bu.service;
 
 import com.test.bu.dao.interfaces.PaymentDao;
-import com.test.bu.dao.interfaces.UserDao;
 import com.test.bu.entity.Payment;
-import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.PaymentService;
-import com.test.bu.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

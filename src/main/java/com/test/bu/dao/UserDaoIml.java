@@ -30,6 +30,13 @@ public class UserDaoIml implements UserDao {
     }
 
     @Override
+    public User getByName(String userName) {
+        return entityManager.createQuery("SELECT u FROM User u WHERE username=:name", User.class)
+                .setParameter("name", userName)
+                .getSingleResult();
+    }
+
+    @Override
     @Transactional
     public void update(User entity) {
         entityManager.merge(entity);
@@ -44,5 +51,4 @@ public class UserDaoIml implements UserDao {
     public List<User> getAll() {
         return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
-
 }

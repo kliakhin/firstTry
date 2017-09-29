@@ -6,7 +6,7 @@
 </head>
 <body class="container">
 <#include "*/header.ftl">
-<h1>I'm  payment list page</h1>
+<h1>I'm payment list page</h1>
 
 <a href="create">Create new</a>
 </body>

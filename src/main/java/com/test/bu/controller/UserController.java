@@ -5,14 +5,10 @@ import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.UserService;
 import com.test.bu.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.soap.Node;
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -34,9 +30,6 @@ public class UserController {
 
     @GetMapping("/all")
     public String getAll(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //Principal principal = (Principal) authentication.getPrincipal();
-       // System.out.println(principal.getName());
         model.addAttribute("users", userService.getAll());
         return "userList";
     }
