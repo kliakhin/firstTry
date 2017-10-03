@@ -16,38 +16,32 @@ public class UserDaoIml implements UserDao {
     private EntityManager entityManager;
 
 
-    @Override
     @Transactional
     public void save(User entity) {
         entityManager.persist(entity);
     }
 
-    @Override
     public User getById(int id) {
         return entityManager.createQuery("SELECT u FROM User u WHERE id=:id", User.class)
                 .setParameter("id", id)
                 .getSingleResult();
     }
 
-    @Override
     public User getByName(String userName) {
         return entityManager.createQuery("SELECT u FROM User u WHERE username=:name", User.class)
                 .setParameter("name", userName)
                 .getSingleResult();
     }
 
-    @Override
     @Transactional
     public void update(User entity) {
         entityManager.merge(entity);
     }
 
-    @Override
     public void delete(User entity) {
         entityManager.remove(entity);
     }
 
-    @Override
     public List<User> getAll() {
         return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }

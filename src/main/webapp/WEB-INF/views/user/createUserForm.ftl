@@ -17,7 +17,7 @@ EROOR:
 
 <form action="create" method="post" name="user" class="form-group">
     Name
-    <input title="Name" type="text" name="name" "/>
+    <input title="Name" type="text" name="userName" "/>
     Email
     <input title="Email" type="text" name="email" "/>
     Age

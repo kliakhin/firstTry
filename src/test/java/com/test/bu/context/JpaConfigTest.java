@@ -12,15 +12,15 @@ import java.util.Properties;
 public class JpaConfigTest extends JpaConfig {
 
     @Override
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = super.entityManagerFactoryBean();
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = super.entityManagerFactory();
         entityManagerFactoryBean.setJpaProperties(getParameters());
         return entityManagerFactoryBean;
     }
 
     private Properties getParameters() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         return properties;
     }

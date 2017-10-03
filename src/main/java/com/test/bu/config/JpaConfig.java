@@ -18,11 +18,12 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+//@EnableJpaRepositories(basePackages = "com.test.bu.dao")
 @ComponentScan(basePackages = "com.test.bu.entity")
 public class JpaConfig {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(getDataSource());
         entityManagerFactoryBean.setPackagesToScan("com.test.bu.entity");

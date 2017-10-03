@@ -13,8 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.NoResultException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Unit test for simple App.
@@ -32,7 +31,7 @@ public class AppTest {
         userService.save(user);
         ArrayList<User> all = (ArrayList<User>) userService.getAll();
         assertEquals(1, all.size());
-        assertEquals("name1", all.get(0).getUsername());
+        assertEquals("name1", all.get(0).getUserName());
     }
 
     @Test(expected = NoResultException.class)
@@ -42,7 +41,8 @@ public class AppTest {
         User user = userService.getByName("name2");
         assertNotNull(user);
         userService.delete(user.getId());
-        userService.getByName("name2");
+        User name2 = userService.getByName("name2");
+        assertNull(name2);
     }
 
     private User createTestUser(String userName) {
@@ -52,7 +52,7 @@ public class AppTest {
         user.setEnabled(1);
         user.setPassword("234");
         user.setPhoneNumber("123");
-        user.setUsername(userName);
+        user.setUserName(userName);
         return user;
     }
 
