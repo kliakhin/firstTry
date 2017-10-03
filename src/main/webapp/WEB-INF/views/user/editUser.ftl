@@ -10,7 +10,7 @@
 <form action="update" method="post" name="user" class="form-group">
     <input title="Id" type="number" name="id" value="${user.id}" hidden/>
     Name
-    <input title="Name" type="text" name="name" value="${user.name}"/>
+    <input title="Name" type="text" name="name" value="${user.userName}"/>
     Email
     <input title="Email" type="text" name="email" value="${user.email}"/>
     Age

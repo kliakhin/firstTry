@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td>Name</td>
-            <td>${user.name}</td>
+            <td>${user.userName}</td>
         </tr>
         <tr>
             <td>Email</td>
