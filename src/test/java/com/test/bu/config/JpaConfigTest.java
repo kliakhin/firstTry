@@ -1,6 +1,6 @@
-package com.test.bu.context;
+package com.test.bu.config;
 
-import com.test.bu.config.JpaConfig;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -34,4 +34,5 @@ public class JpaConfigTest extends JpaConfig {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
+
 }
