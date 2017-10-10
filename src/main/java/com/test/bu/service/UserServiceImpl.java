@@ -1,6 +1,6 @@
 package com.test.bu.service;
 
-import com.test.bu.dao.interfaces.UserDao;
+import com.test.bu.dao2.UserDao2;
 import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +13,21 @@ import java.util.Collection;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDao2 userDao;
 
     @Override
     public User getById(int id) {
-        return userDao.getById(id);
+        return userDao.findById(id);
     }
 
     @Override
     public User getByName(String userName) {
-        return userDao.getByName(userName);
+        return userDao.findByUserName(userName);
     }
 
     @Override
     public Collection<User> getAll() {
-        return userDao.getAll();
+        return userDao.findAll();
     }
 
     @Override
@@ -38,12 +38,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void delete(int id) {
-        userDao.delete(userDao.getById(id));
+        userDao.delete(id);
     }
 
     @Override
     public void update(User user) {
-        userDao.update(user);
+        userDao.save(user);
     }
 
 }
