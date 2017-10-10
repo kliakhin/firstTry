@@ -150,5 +150,10 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>1.11.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.0</version>
+        </dependency>
     </dependencies>
 </project>

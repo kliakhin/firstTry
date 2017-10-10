@@ -34,6 +34,14 @@ public class UserController {
         return "userList";
     }
 
+    @GetMapping("/myurl")
+    public @ResponseBody
+    User getMyJson() {
+        User user = new User();
+        user.setUserName("name1");
+        return user;
+    }
+
 
     @GetMapping("/create")
     public String createPage(@RequestParam(value = "message", required = false) String message,
