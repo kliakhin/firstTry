@@ -30,6 +30,11 @@
         </tr>
     </#list>
     </table>
+<#if pages??>
+    <#list pages as page>
+        <span><a href="/user/all?page=${page}">${page} ;</a></span>
+    </#list>
+</#if>
 </div>
 <a href="create">Create new</a>
 </body>

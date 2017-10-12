@@ -1,5 +1,6 @@
 package com.test.bu.service;
 
+import com.test.bu.dao.interfaces.PaymentDao;
 import com.test.bu.dao2.UserDao2;
 import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.UserService;
@@ -9,8 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,13 +23,14 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
+    private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDao2 userDao;
 
-    private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
-
+    @Autowired
+    private PaymentDao paymentDao;
 
     @Override
     public User getById(int id) {
@@ -38,6 +44,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> getAll(Integer page, Integer size, String order) {
+        if (StringUtils.isEmpty(order)) {
+            order = "id";
+        }
         Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, order));
         Pageable pageable = new PageRequest(page, size, sort);
         return userDao.findAll(pageable);
@@ -45,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Collection<User> getAll() {
-        List<User> result = new ArrayList<>();
+        List<User> result;
         try {
             result = userDao.findAll();
         } catch (Exception e) {
@@ -71,4 +80,8 @@ public class UserServiceImpl implements UserService {
         userDao.save(user);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
+    }
 }

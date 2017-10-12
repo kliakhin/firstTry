@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -37,15 +40,25 @@ public class UserController {
                          @RequestParam(value = "page", required = false) Integer page,
                          @RequestParam(value = "size", required = false) Integer size,
                          @RequestParam(value = "order", required = false) String order) {
-        if (page != null && size != null) {
+        int totalPages = 0;
+        if (page != null) {
+            size = 2;
             Page<User> pages = userService.getAll(page, size, order);
-            int totalPages = pages.getTotalPages();
+            totalPages = pages.getTotalPages();
+            model.addAttribute("total", totalPages);
             model.addAttribute("users", pages.getContent());
-        } else if (order != null) {
+        } else if (!StringUtils.isEmpty(order)) {
             model.addAttribute("users", userService.getAll(0, 100, order).getContent());
         } else {
-            model.addAttribute("users", userService.getAll());
+            Collection<User> all = userService.getAll();
+            model.addAttribute("users", all);
+            totalPages = all.size() / 2;
         }
+        List<Integer> pagesCount = new ArrayList<>();
+        for (int i = 0; i < totalPages; i++) {
+            pagesCount.add(i);
+        }
+        model.addAttribute("pages", pagesCount);
         return "userList";
     }
 
