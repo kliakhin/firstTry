@@ -8,5 +8,8 @@
 
 <h1>I'm errrrror page!</h1>
 
+<div>
+    <a href="/" class="button">Go Home</a>
+</div>
 </body>
 </html>

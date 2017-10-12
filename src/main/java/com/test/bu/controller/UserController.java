@@ -4,7 +4,9 @@ package com.test.bu.controller;
 import com.test.bu.entity.User;
 import com.test.bu.service.interfaces.UserService;
 import com.test.bu.utils.Utils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    private static final Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -29,8 +33,19 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public String getAll(Model model) {
-        model.addAttribute("users", userService.getAll());
+    public String getAll(Model model,
+                         @RequestParam(value = "page", required = false) Integer page,
+                         @RequestParam(value = "size", required = false) Integer size,
+                         @RequestParam(value = "order", required = false) String order) {
+        if (page != null && size != null) {
+            Page<User> pages = userService.getAll(page, size, order);
+            int totalPages = pages.getTotalPages();
+            model.addAttribute("users", pages.getContent());
+        } else if (order != null) {
+            model.addAttribute("users", userService.getAll(0, 100, order).getContent());
+        } else {
+            model.addAttribute("users", userService.getAll());
+        }
         return "userList";
     }
 

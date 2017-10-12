@@ -10,11 +10,11 @@
     <caption>Users list</caption>
     <table class="table table-striped">
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Phone</th>
+            <th><a href="all?order=id">Id</a></th>
+            <th><a href="all?order=userName">Name</a></th>
+            <th><a href="all?order=email">Email</a></th>
+            <th><a href="all?order=age">Age</a></th>
+            <th><a href="all?order=phoneNumber">Phone</a></th>
             <th>Buttons</th>
         </tr>
     <#list users as user>
