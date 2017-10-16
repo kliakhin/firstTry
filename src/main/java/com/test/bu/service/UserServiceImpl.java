@@ -11,19 +11,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
     private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
@@ -81,7 +79,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+    public UserDetails loadUserByUsername(String email) {
+        User user = userDao.findByEmail(email);
+        if (user == null) {
+            throw new UsernameNotFoundException(email);
+        }
+        return new MyUserPrincipal(user);
     }
 }

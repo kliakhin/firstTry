@@ -1,16 +1,18 @@
 package com.test.bu.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String username;
-    private String role;
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
 
     public int getId() {
         return id;
@@ -20,19 +22,19 @@ public class Role {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public Collection<User> getUsers() {
+        return users;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
 }

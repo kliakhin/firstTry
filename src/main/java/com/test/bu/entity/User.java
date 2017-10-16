@@ -3,6 +3,7 @@ package com.test.bu.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,14 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Payment.class)
     @JoinColumn(name = "customer_id")
     private List<Payment> payments = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     public User() {
     }
@@ -92,6 +101,14 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -100,5 +117,9 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    public String getRole() {
+        return "Admin";
     }
 }

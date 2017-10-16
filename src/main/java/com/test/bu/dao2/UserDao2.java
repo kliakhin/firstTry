@@ -14,4 +14,6 @@ public interface UserDao2 extends JpaRepository<User, Integer> {
 
     @Override
     Page<User> findAll(Pageable pageable);
+
+    User findByEmail(String email);
 }
