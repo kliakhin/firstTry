@@ -1,5 +1,6 @@
 package com.test.bu.service;
 
+import com.test.bu.entity.Role;
 import com.test.bu.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +21,10 @@ public class MyUserPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> auths = new ArrayList<>();
-        auths.add(new SimpleGrantedAuthority(user.getRole()));
+        Collection<Role> roles = user.getRoles();
+        for (Role role : roles) {
+            auths.add(new SimpleGrantedAuthority(role.getName()));
+        }
         return auths;
     }
 

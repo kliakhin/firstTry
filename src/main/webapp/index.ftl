@@ -14,6 +14,10 @@
 </@security.authorize>
 
     <h2>The best app ever!</h2>
+
+    <a href="/?mylocale=en">English </a> | <a href="/?mylocale=ua">Ukraine </a>
+    <h3> <@spring.message "title"/></h3>
+    <h3>${.locale}</h3>
 </div>
 
 </body>

@@ -24,7 +24,7 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Payment.class)
     @JoinColumn(name = "customer_id")
     private List<Payment> payments = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -117,9 +117,5 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
-    }
-
-    public String getRole() {
-        return "Admin";
     }
 }

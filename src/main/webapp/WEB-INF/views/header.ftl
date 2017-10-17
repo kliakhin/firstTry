@@ -6,6 +6,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<#import "/spring.ftl" as spring/>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -13,8 +14,8 @@
             <a class="navbar-brand" href="/">MyApp</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="/user/all">Users</a></li>
-            <li class=""><a href="/goods/all">Goods</a></li>
+            <li class="active"><a href="/user/all"><@spring.message "header.users"/></a></li>
+            <li class=""><a href="/goods/all"><@spring.message "header.goods"/></a></li>
             <li class=""><a href="/payment/all">Payments</a></li>
             <li class=""><a href="/basket/all">Baskets</a></li>
         </ul>

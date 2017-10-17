@@ -9,7 +9,7 @@
 
 <form action="update" method="post" name="user" class="form-group">
     <input title="Id" type="number" name="id" value="${user.id}" hidden/>
-    Name
+    <@spring.message "user.name"/>
     <input title="Name" type="text" name="username" value="${user.userName}"/>
     Email
     <input title="Email" type="text" name="email" value="${user.email}"/>
